@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+body {
+	font-family: 'メイリオ',
+	'Hiragino kaku Gothio Pro',sans-serif;
+}
+
+	/*Flexbox練習*/ 
+.parent{
+   display: flex;
+   flex-direction: row-reverse;
+   flex-wrap: nowrap;
+}
+
+.children01{
+	width: 25%;
+	background-color: #D71D3B;
+	padding: 0;
+}
+
+.children02{
+	width: 25%;
+	background-color: #000000;
+	padding: 0;
+}
+
+.children03{
+	width: 25%;
+	background-color: #8fc947;
+	padding: 0;
+
+}
+
+.children04{
+	width: 25%;
+	background-color: #0000FF;
+	padding: 0;
+}
+	/*Flexbox練習 終了*/
+
+
+
+

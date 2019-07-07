@@ -1,0 +1,15 @@
+<div class="contents row" >
+    <div>
+        <% @tweets.each do |tweet| %>
+        <div style="">
+            <a><%= tweet.id %></a>
+            <a><%= tweet.text %></a>
+            <a><%= tweet.user_id %></a>
+            <% if user_signed_in? && current_user.id == tweet.user_id %>
+                <%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %>
+                <%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+</div>
