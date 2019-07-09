@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Sample</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,18 +15,25 @@
   </head>
 
   <body>
-  <% if user_signed_in? %>
-    <div class="user_nav grid-6">
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <a class="post" href="/tweets/new">投稿する</a>
-      <a href="/users/<%= current_user.id %>">マイページ</a>
+    <div class="header" style="display:block;">
+      <ul class="nav" style="margin: 0;">
+      <li class="top" style=""><a href="/">top</a></li>
+      <div class="hide-on-small-only">
+        <% if user_signed_in? %>
+          <div class="user_nav grid-6">
+            <li style="height:50px;width:10%;font-size:12px;padding-top:11px;"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <li style="height:50px;width:10%;font-size:12px;padding-top:11px;"><a class="post" href="/tweets/new">投稿する</a></li>
+            <li style="height:50px;width:10%;font-size:12px;padding-top:11px;"><a href="/users/<%= current_user.id %>">マイページ</a></li>
+          </div>
+        <% else %>
+          <div class="grid-6">
+            <li style="height:50px;width:15%;font-size:12px;padding-top:11px;"><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
+            <li style="height:50px;width:15%;font-size:12px;padding-top:11px;"><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+          </div>
+        <% end %>
+      </div>
+      </ul>
     </div>
-  <% else %>
-    <div class="grid-6">
-      <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-      <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-    </div>
-  <% end %>
     <%= yield %>
   </body>
 </html>
