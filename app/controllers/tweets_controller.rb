@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
 	before_action :move_to_index, except: :index
 
 	def index
-		@tweets = Tweet.all.order("created_at DESC")
+		@tweets = Tweet.all.order("created_at DESC").page(params[:page]).per(10)
 	end
 
 	def new
@@ -24,8 +24,8 @@ class TweetsController < ApplicationController
 	def destroy
         tweet = Tweet.find(params[:id])
         tweet.destroy
-    end
-
+	end
+	
 	private
 	def tweet_params
 		params.permit(:text)
